@@ -18,7 +18,7 @@ The following **optional** features are implemented:
 - [x] User sees an error message when there's a networking error.
 - [x] Movies are displayed using a CollectionView instead of a TableView.
 - [x] User can search for a movie.
-- [ ] All images fade in as they are loading.
+- [x] All images fade in as they are loading.
 - [ ] Customize the UI.
 
 The following **additional** features are implemented:
@@ -39,7 +39,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![demo](https://cloud.githubusercontent.com/assets/15274466/22282715/0c468e66-e293-11e6-8d6e-3a5ac361c15a.gif)
+![demo](https://cloud.githubusercontent.com/assets/15274466/22358568/0be8cf52-e3f5-11e6-83d2-586529b9010f.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

@@ -1,9 +1,8 @@
-/* USELESS FILE BECUASE IT IS SAME THING AS MCviewController.swift BUT IT JUST CANNOT TRANSIT TO THE OTHER VIEWCONTROLLER!!!!! BUT I KEEP THIS ON REFERENCE
- 
-//  MoviesViewController.swift
+
+//  MCviewController.swift
 //  MovieViewer
 //
-//  Created by Chengjiu Hong on 1/15/17.
+//  Created by Chengjiu Hong on 2/2/17.
 //  Copyright © 2017 Chengjiu Hong. All rights reserved.
 //
 
@@ -11,29 +10,28 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate {
+class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate {
 
-
-    @IBOutlet weak var networkErrorButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchbar: UISearchBar!
+    @IBOutlet weak var networkErrorButton: UIButton!
     
     var movies : [NSDictionary]? //actual data
     var filterMovies: [NSDictionary]? //represent rows of data that match our search text.
     var refreshControl: UIRefreshControl!
+    var textSearch = "" //keep the search text
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.dataSource = self
         collectionView.delegate = self
-        searchBar.delegate = self
+        searchbar.delegate = self
         
         networkErrorButton.isHidden = true
         
         //Initialize a UIRefreshControl
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(MoviesViewController.refreshControlAction(sender:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(MCviewController.refreshControlAction(sender:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
         collectionView.insertSubview(refreshControl, at: 0)
         
@@ -68,12 +66,12 @@ class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollecti
             }
         }
         task.resume()
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -83,21 +81,19 @@ class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }else{
             return 0
         }
-    
+        
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MoviieCollectionViewCell //Downcast into MovieCell class object
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MoviieCollectionViewCell //Downcast into MoviieCollectionViewCell class object
+        
         let movie = filterMovies![indexPath.row] //get single movie
-
-        //let title = movie["title"] as! String
-        //let overview = movie["overview"] as! String
+        
         let baseURL = "http://image.tmdb.org/t/p/w500"
         let posterPath = movie["poster_path"] as! String
         let imageURL = NSURL(string: baseURL + posterPath)
         let imageRequest = NSURLRequest(url: imageURL as! URL)
-        //cell.posterView.setImageWith(imageURL as! URL)
+
         //Fading in an Image Loaded from the Network
         cell.posterView.setImageWith(
             imageRequest as URLRequest,
@@ -120,11 +116,24 @@ class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollecti
             failure: { (imageRequest, imageResponse, error) -> Void in
                 // do something for the failure condition
         })
-
-        //cell.titleLabel.text = title
-        //cell.overviewLabel.text = overview
+        
         //print ("row \(indexPath.row)")
         return cell
+    }
+    
+    //When the search text changes we update filteredMovies and reload our table.
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filterMovies is the same as the original movies
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all movie in the movies array
+        // For each movie, return true if the movie should be included and false if the
+        // movie should NOT be included
+        self.textSearch = searchText
+        filterMovies = searchText.isEmpty ? movies : movies?.filter({(movie: NSDictionary) -> Bool in
+            // If movie matches the searchText, return true to include it
+            return (movie["title"] as! String).range(of: searchText, options: .caseInsensitive) != nil
+        })
+        collectionView.reloadData()
     }
     
     //refresh function call
@@ -175,7 +184,7 @@ class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollecti
             if let data = data {
                 self.networkErrorButton.isHidden = true
                 if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                    print(dataDictionary)
+                    //print(dataDictionary)
                     self.movies = dataDictionary["results"] as? [NSDictionary]
                     self.filterMovies = self.movies
                     //Tableview is always get done before the network connection!!!!!
@@ -188,39 +197,20 @@ class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollecti
             }
         }
         task.resume()
+
     }
     
-    /*show Cancel button when user taps on search bar
+    //show Cancel button when user taps on search bar
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
+        self.searchbar.showsCancelButton = true
     }
     
-    //taps on cancel button: hide the Cancel button, clear existing text in search bar and hide the
+    //taps on cancel button: hide the Cancel button, keep existing text in search bar and hide the keyboard
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
-        searchBar.text = ""
+        searchBar.text = self.textSearch
         searchBar.resignFirstResponder()
     }
-    */
-  
-    //When the search text changes we update filteredMovies and reload our table.
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filterMovies is the same as the original movies
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all movie in the movies array
-        // For each movie, return true if the movie should be included and false if the
-        // movie should NOT be included
-        filterMovies = searchText.isEmpty ? movies : movies?.filter({(movie: NSDictionary) -> Bool in
-            // If movie matches the searchText, return true to include it
-            return (movie["title"] as! String).range(of: searchText, options: .caseInsensitive) != nil
-        })
-        collectionView.reloadData()
-    }
     
-    //tap the view to dismiss keyboard
-    @IBAction func onTap(_ sender: Any) {
-        view.endEditing(true)
-    }
-  
+
 }
- */

@@ -1,4 +1,4 @@
-//
+/* THIS IS TABLEVIEW CELL
 //  MovieCell.swift
 //  MovieViewer
 //
@@ -26,3 +26,4 @@ class MovieCell: UITableViewCell {
     }
 
 }
+*/

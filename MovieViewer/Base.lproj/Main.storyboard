@@ -10,90 +10,121 @@
     </dependencies>
     <scenes>
         <!--Flick-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="wQC-Sp-Xxi">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MoviesViewController" customModule="MovieViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D45-fA-xOK" customClass="MCviewController" customModule="MovieViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OTz-Mn-G6w"/>
-                        <viewControllerLayoutGuide type="bottom" id="eFP-e2-all"/>
+                        <viewControllerLayoutGuide type="top" id="c0a-oC-5vG"/>
+                        <viewControllerLayoutGuide type="bottom" id="bVh-x9-hZE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="EFq-b5-adb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dBB-vT-pOb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="P6T-Mm-8UM">
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWY-Sw-WYq">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D5f-aQ-9zN">
+                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Iz-E7-wCs">
                                     <size key="itemSize" width="200" height="281"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="oKD-6H-C29" customClass="MoviieCollectionViewCell" customModule="MovieViewer" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="DPs-qj-dzI" customClass="MoviieCollectionViewCell" customModule="MovieViewer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0F-aT-fAE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-Dg-Dav">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
-                                            <outlet property="posterView" destination="O0F-aT-fAE" id="iaB-O4-aTE"/>
+                                            <outlet property="posterView" destination="Nfm-Dg-Dav" id="kWf-Ye-mLc"/>
+                                            <segue destination="OY3-fZ-H3y" kind="push" id="5tW-vD-LCo"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKu-Fo-uxc">
-                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DZ-tY-PLo">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmM-N9-jOG">
                                 <rect key="frame" x="0.0" y="108" width="414" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.38152128579923594" blue="0.16892663716547252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93805520304568524" green="0.12218627958123397" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Network Error"/>
                                 <connections>
-                                    <action selector="networkErrorBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6hm-pH-GBg"/>
+                                    <action selector="networkErrorBtnAction:" destination="D45-fA-xOK" eventType="touchUpInside" id="Z8u-OW-PFh"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7DZ-tY-PLo" secondAttribute="trailing" id="1XM-uU-ARA"/>
-                            <constraint firstItem="7DZ-tY-PLo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3qm-N6-aak"/>
-                            <constraint firstItem="7DZ-tY-PLo" firstAttribute="top" secondItem="OTz-Mn-G6w" secondAttribute="bottom" constant="44" id="71D-YN-wLG"/>
-                            <constraint firstItem="dBB-vT-pOb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="8An-ea-4xV"/>
-                            <constraint firstItem="eFP-e2-all" firstAttribute="top" secondItem="dBB-vT-pOb" secondAttribute="bottom" id="Evm-hu-f4L"/>
-                            <constraint firstAttribute="trailing" secondItem="dBB-vT-pOb" secondAttribute="trailing" id="Mqr-4a-W3C"/>
-                            <constraint firstItem="dBB-vT-pOb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="haY-q2-d6o"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="nvK-Yz-ehY" appends="YES" id="dvR-Ei-mfY"/>
-                        </connections>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Flick" id="FI6-pv-Ved"/>
+                    <navigationItem key="navigationItem" title="Flick" id="Pgw-kv-YhS"/>
                     <connections>
-                        <outlet property="collectionView" destination="dBB-vT-pOb" id="tdg-du-APe"/>
-                        <outlet property="networkErrorButton" destination="7DZ-tY-PLo" id="3Es-d1-KOO"/>
-                        <outlet property="searchBar" destination="qKu-Fo-uxc" id="aqt-ex-Ofk"/>
+                        <outlet property="collectionView" destination="D5f-aQ-9zN" id="8cJ-ty-HSR"/>
+                        <outlet property="networkErrorButton" destination="lmM-N9-jOG" id="RKd-aq-iXH"/>
+                        <outlet property="searchbar" destination="GWY-Sw-WYq" id="Swx-sI-N2J"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="nvK-Yz-ehY">
-                    <connections>
-                        <action selector="onTap:" destination="BYZ-38-t0r" id="9Fb-jZ-V3I"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8J-L7-akL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="128"/>
+            <point key="canvasLocation" x="1265" y="128"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="lmn-6m-Ih6">
+            <objects>
+                <viewController id="OY3-fZ-H3y" customClass="DetailViewController" customModule="MovieViewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sGE-vt-BgT"/>
+                        <viewControllerLayoutGuide type="bottom" id="G0K-MX-rdi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WCt-mP-GtQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZS2-eS-bl4">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58I-nR-CCg">
+                                <rect key="frame" x="0.0" y="465" width="414" height="271"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-OX-cwp">
+                                        <rect key="frame" x="8" y="81" width="398" height="182"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZt-D0-PgZ">
+                                <rect key="frame" x="10" y="475" width="384" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="7LI-eE-Yc5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmP-eD-rhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FUQ-fF-Dr2">
@@ -106,7 +137,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="P9z-t7-Xp9"/>
+                        <segue destination="D45-fA-xOK" kind="relationship" relationship="rootViewController" id="Kkp-jh-TfD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Et-XE-rqd" userLabel="First Responder" sceneMemberID="firstResponder"/>

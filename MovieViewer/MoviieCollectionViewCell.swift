@@ -11,4 +11,5 @@ import UIKit
 class MoviieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterView: UIImageView!
+
 }
