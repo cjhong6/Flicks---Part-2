@@ -97,7 +97,8 @@ class MoviesViewController: UIViewController,UICollectionViewDelegate,UICollecti
         let posterPath = movie["poster_path"] as! String
         let imageURL = NSURL(string: baseURL + posterPath)
         let imageRequest = NSURLRequest(url: imageURL as! URL)
-        //cell.posterView.setImageWith(imageURL as! URL)
+        cell.posterView.setImageWith(imageURL as! URL)
+ 
         //Fading in an Image Loaded from the Network
         cell.posterView.setImageWith(
             imageRequest as URLRequest,

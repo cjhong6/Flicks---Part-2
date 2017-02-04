@@ -29,7 +29,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D5f-aQ-9zN">
                                 <rect key="frame" x="0.0" y="108" width="414" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.16743620315910954" green="0.17328266392457836" blue="0.30831614847715738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Iz-E7-wCs">
                                     <size key="itemSize" width="200" height="281"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -44,12 +44,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-Dg-Dav">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-Dg-Dav">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="centerY" secondItem="DPs-qj-dzI" secondAttribute="centerY" id="6QP-Xd-lR0"/>
+                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="height" secondItem="DPs-qj-dzI" secondAttribute="height" id="9FV-o5-34S"/>
+                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="width" secondItem="DPs-qj-dzI" secondAttribute="width" id="RtB-pK-Had"/>
+                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="centerX" secondItem="DPs-qj-dzI" secondAttribute="centerX" id="p0n-5C-XAZ"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="posterView" destination="Nfm-Dg-Dav" id="kWf-Ye-mLc"/>
                                             <segue destination="OY3-fZ-H3y" kind="push" id="5tW-vD-LCo"/>
@@ -100,27 +105,32 @@
                                 <rect key="frame" x="0.0" y="465" width="414" height="271"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-OX-cwp">
-                                        <rect key="frame" x="8" y="81" width="398" height="182"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZt-D0-PgZ">
+                                        <rect key="frame" x="8" y="8" width="398" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-OX-cwp">
+                                        <rect key="frame" x="8" y="56" width="398" height="207"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZt-D0-PgZ">
-                                <rect key="frame" x="10" y="475" width="384" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="7LI-eE-Yc5"/>
+                    <connections>
+                        <outlet property="overviewLabel" destination="2FM-OX-cwp" id="3k3-HE-lrX"/>
+                        <outlet property="posterImageView" destination="ZS2-eS-bl4" id="spR-zc-wDq"/>
+                        <outlet property="titleLabel" destination="gZt-D0-PgZ" id="LkY-5f-eyF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmP-eD-rhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate {
+class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate,UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchbar: UISearchBar!
@@ -35,38 +35,8 @@ class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         // add refresh control to table view
         collectionView.insertSubview(refreshControl, at: 0)
         
-        //make API call
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        makeAPICall()
         
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        
-        // Display HUD right before the request is made
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        
-        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            
-            // Hide HUD once the network request comes back (must be done on main UI thread)
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            if let data = data {
-                if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                    //print(dataDictionary)
-                    self.movies = dataDictionary["results"] as? [NSDictionary]
-                    self.filterMovies = self.movies
-                    //Tableview is always get done before the network connection!!!!!
-                    //MUST reload the tableview again after the network has been made
-                    self.collectionView.reloadData()
-                }
-            }
-            else{
-                self.networkErrorButton.isHidden = false
-            }
-        }
-        task.resume()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,66 +108,14 @@ class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     //refresh function call
     func refreshControlAction(sender:AnyObject) {
-        
-        // ... Create the URLRequest `myRequest` ...
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        
-        // Configure session so that completion handler is executed on main UI thread
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            
-            // ... Use the new data to update the data source ...
-            if let data = data {
-                if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                    self.movies = dataDictionary["results"] as? [NSDictionary]
-                    self.filterMovies = self.movies
-                    // Reload the tableView now that there is new data
-                    self.collectionView.reloadData()
-                }
-            }
-            
+            makeAPICall()
             // Tell the refreshControl to stop spinning
             self.refreshControl.endRefreshing()
-        }
-        task.resume()
     }
     
-    //click the network error button to retrieve data
+    //click the network error button to make API call
     @IBAction func networkErrorBtnAction(_ sender: Any) {
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
-        
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        
-        // Display HUD right before the request is made
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        
-        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            
-            // Hide HUD once the network request comes back (must be done on main UI thread)
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            if let data = data {
-                self.networkErrorButton.isHidden = true
-                if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                    //print(dataDictionary)
-                    self.movies = dataDictionary["results"] as? [NSDictionary]
-                    self.filterMovies = self.movies
-                    //Tableview is always get done before the network connection!!!!!
-                    //MUST reload the tableview again after the network has been made
-                    self.collectionView.reloadData()
-                }
-            }
-            else{
-                self.networkErrorButton.isHidden = false
-            }
-        }
-        task.resume()
-
+        makeAPICall()
     }
     
     //show Cancel button when user taps on search bar
@@ -212,5 +130,65 @@ class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         searchBar.resignFirstResponder()
     }
     
+    //Make API call
+    func makeAPICall(){
+        // ... Create the URLRequest `myRequest` ...
+        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        // Display HUD right before the request is made
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        
+        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            
+        // Hide HUD once the network request comes back (must be done on main UI thread)
+        MBProgressHUD.hide(for: self.view, animated: true)
+            
+        // ... Use the new data to update the data source ...
+        if let data = data {
+                if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+                    //print(dataDictionary)
+                    self.movies = dataDictionary["results"] as? [NSDictionary]
+                    self.filterMovies = self.movies
+                    //Tableview is always get done before the network connection!!!!!
+                    //MUST reload the tableview again after the network has been made
+                    self.collectionView.reloadData()
+                }
+            }
+            else{
+                self.networkErrorButton.isHidden = false
+            }
+        }
+        task.resume()
+    }
+    
+    //space between left and right cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width:206.5, height: 281)
+    }
+    
+    //space between up and down cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+ 
+    //space between up and down cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
 
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        let indexpath = collectionView.indexPath(for: cell)
+        let movie = filterMovies?[(indexpath?.row)!]
+        
+        let detailViewController = segue.destination as! DetailViewController
+        detailViewController.movie = movie
+     }
+ 
 }
