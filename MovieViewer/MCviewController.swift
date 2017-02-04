@@ -1,4 +1,4 @@
-
+//
 //  MCviewController.swift
 //  MovieViewer
 //
@@ -16,6 +16,7 @@ class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     @IBOutlet weak var searchbar: UISearchBar!
     @IBOutlet weak var networkErrorButton: UIButton!
     
+    var endpoint: String?
     var movies : [NSDictionary]? //actual data
     var filterMovies: [NSDictionary]? //represent rows of data that match our search text.
     var refreshControl: UIRefreshControl!
@@ -134,7 +135,8 @@ class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     func makeAPICall(){
         // ... Create the URLRequest `myRequest` ...
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        //print(endpoint!)
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
