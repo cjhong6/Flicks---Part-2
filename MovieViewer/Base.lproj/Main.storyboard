@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="tEN-Z3-8xh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="tEN-Z3-8xh">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,20 +13,16 @@
         <scene sceneID="wQC-Sp-Xxi">
             <objects>
                 <viewController id="D45-fA-xOK" customClass="MCviewController" customModule="MovieViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="c0a-oC-5vG"/>
-                        <viewControllerLayoutGuide type="bottom" id="bVh-x9-hZE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EFq-b5-adb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWY-Sw-WYq">
+                            <searchBar contentMode="redraw" id="GWY-Sw-WYq">
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D5f-aQ-9zN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="D5f-aQ-9zN">
                                 <rect key="frame" x="0.0" y="108" width="414" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.16743620315910954" green="0.17328266392457836" blue="0.30831614847715738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,17 +40,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-Dg-Dav">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Nfm-Dg-Dav">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="281"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="centerY" secondItem="DPs-qj-dzI" secondAttribute="centerY" id="6QP-Xd-lR0"/>
-                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="height" secondItem="DPs-qj-dzI" secondAttribute="height" id="9FV-o5-34S"/>
-                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="width" secondItem="DPs-qj-dzI" secondAttribute="width" id="RtB-pK-Had"/>
-                                            <constraint firstItem="Nfm-Dg-Dav" firstAttribute="centerX" secondItem="DPs-qj-dzI" secondAttribute="centerX" id="p0n-5C-XAZ"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="posterView" destination="Nfm-Dg-Dav" id="kWf-Ye-mLc"/>
                                             <segue destination="OY3-fZ-H3y" kind="push" id="5tW-vD-LCo"/>
@@ -62,7 +53,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmM-N9-jOG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lmM-N9-jOG">
                                 <rect key="frame" x="0.0" y="108" width="414" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93805520304568524" green="0.12218627958123397" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,46 +80,50 @@
         <scene sceneID="lmn-6m-Ih6">
             <objects>
                 <viewController id="OY3-fZ-H3y" customClass="DetailViewController" customModule="MovieViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sGE-vt-BgT"/>
-                        <viewControllerLayoutGuide type="bottom" id="G0K-MX-rdi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WCt-mP-GtQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZS2-eS-bl4">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58I-nR-CCg">
-                                <rect key="frame" x="0.0" y="465" width="414" height="271"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="pKs-CL-UVr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZt-D0-PgZ">
-                                        <rect key="frame" x="8" y="8" width="398" height="40"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="ZS2-eS-bl4">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="30"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-OX-cwp">
-                                        <rect key="frame" x="8" y="56" width="398" height="207"/>
+                                    </imageView>
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" id="58I-nR-CCg">
+                                        <rect key="frame" x="0.0" y="816" width="414" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gZt-D0-PgZ">
+                                                <rect key="frame" x="8" y="8" width="398" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2FM-OX-cwp">
+                                                <rect key="frame" x="8" y="96" width="398" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="7LI-eE-Yc5"/>
                     <connections>
+                        <outlet property="infoView" destination="58I-nR-CCg" id="yMz-n5-1iv"/>
                         <outlet property="overviewLabel" destination="2FM-OX-cwp" id="3k3-HE-lrX"/>
                         <outlet property="posterImageView" destination="ZS2-eS-bl4" id="spR-zc-wDq"/>
+                        <outlet property="scrollView" destination="pKs-CL-UVr" id="G1y-cY-cYj"/>
                         <outlet property="titleLabel" destination="gZt-D0-PgZ" id="LkY-5f-eyF"/>
                     </connections>
                 </viewController>
