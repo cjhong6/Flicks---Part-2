@@ -8,9 +8,9 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] User can view movie details by tapping on a cell.
-- [ ] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
-- [ ] Customize the selection effect of the cell.
+- [x] User can view movie details by tapping on a cell.
+- [x] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [x] Customize the selection effect of the cell.
 
 The following **optional** features are implemented:
 
@@ -30,7 +30,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![demo](https://cloud.githubusercontent.com/assets/15274466/22583669/f17e6f2e-e9a2-11e6-8256-7b31224f9fc7.gif)
+![demo](https://cloud.githubusercontent.com/assets/15274466/22617709/73200b4a-ea80-11e6-9cc9-e8de9f8e0fa6.gif)
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).

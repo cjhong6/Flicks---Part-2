@@ -184,6 +184,7 @@ class MCviewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         return 0.0
     }
 
+    //transit to DetailViewController
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! UICollectionViewCell
         let indexpath = collectionView.indexPath(for: cell)
