@@ -30,8 +30,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![demo](https://cloud.githubusercontent.com/assets/15274466/22617709/73200b4a-ea80-11e6-9cc9-e8de9f8e0fa6.gif)
-
+![demo](https://cloud.githubusercontent.com/assets/15274466/22756912/af405d0c-edfd-11e6-819f-ac9774652aee.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
